@@ -1,0 +1,94 @@
+{
+	"pluginDetails": {
+		"pluginId": "hive-load",
+		"name": "Hive Data Load",
+		"description": "plugin to load data into hive",
+		"version": "1.0.0",
+		"author": "bdreuser",
+		"pluginWebsite": "www.google.com",
+		"uninstallable": false
+	},
+	"pluginDependency": [{
+
+		"pluginId": "bdre-min",
+		"version": "1",
+		"versionLevel": "1"
+	}],
+	"pluginConfig": [{
+
+		"configGroup": "14.wf-cont-nodes",
+		"key": "1",
+		"value": "com.wipro.ats.bdre.wgen.DataGenerationNode"
+	}, {
+
+		"configGroup": "14.wf-cont-nodes",
+		"key": "2",
+		"value": "com.wipro.ats.bdre.wgen.FileRegistrationNode"
+	}, {
+
+		"configGroup": "14.wf-gen",
+		"key": "workflow jar location",
+		"value": "bdre/lib/hive-gen.jar"
+	}],
+	"install": {
+		"fs": [{
+
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/rdbms-ingestion.jar",
+			"destinationLocation": "bdre/lib/hive-gen.jar",
+			"permission": "777",
+			"copy": true
+		}, {
+
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/hive-data-gen-1.1-SNAPSHOT.jar",
+			"destinationLocation": "bdre/lib/hive-data-gen-1.1-SNAPSHOT.jar",
+			"permission": "777",
+			"copy": true
+		}, {
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/process-type-18.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-18.sh",
+			"permission": "777",
+			"copy": true
+		}],
+		"metadata": {
+			"insert": [{
+				"tableName": "PROCESS_TYPE",
+				"data": [
+					[18, "Hive Generation_Parent", "NULL"],
+					[14, "Hive Generation", 18]
+				]
+			}, {
+				"tableName": "GENERAL_CONFIG",
+				"data": [
+					["18", "credential", "Credential Configuration", "Credentials for authentication", 1, "true|false", "option", 1],
+					["14", "data", "Data-generate Configuration", " ", 1, "true", "text", 1],
+					["14", "table", "table Schema Configuration", " ", 1, "true", "text", 1],
+					["default_val.18", "password_enabled", "credential", "Credentials for authentication", 1, "true", "text", 1],
+					["testDataGen", "data-gen-id.1", "data", "Generating Date", 1, "randomDate", "text", 1],
+					["testDataGen", "data-gen-id.2", "data", "Generating number", 1, "randomNumber", "text", 1],
+					["testDataGen", "data-gen-id.3", "data", "Generating String", 1, "randomRegexPattern", "text", 1]
+				]
+			}],
+			"update": {
+				"tableName": "",
+				"data": []
+
+			},
+			"delete": {
+				"tableName": "",
+				"data": []
+
+			}
+		},
+		"uiWar": {
+			"location": "files/webapp/md-ui-1.1-SNAPSHOT.war"
+
+		},
+		"restWar": {
+			"location": "files/webapp/md-rest-api-1.1-SNAPSHOT.war"
+		}
+
+	}
+}
