@@ -1,8 +1,8 @@
 {
 	"pluginDetails": {
-		"pluginId": "hive-load",
-		"name": "Hive Data Load",
-		"description": "plugin to load data into hive",
+		"pluginId": "hive-gen",
+		"name": "Hive Data Gen",
+		"description": "plugin to generate hive test data",
 		"version": "1.0.0",
 		"author": "bdreuser",
 		"pluginWebsite": "www.google.com",
@@ -29,20 +29,25 @@
 		"configGroup": "14.wf-gen",
 		"key": "workflow jar location",
 		"value": "bdre/lib/hive-gen.jar"
+	}, {
+
+		"configGroup": "navigation",
+		"key": "Data Ingestion",
+		"value": "{'label': 'Generate Bulk Data','collapse': '1','url': 'datagen.page','children': []}"
 	}],
 	"install": {
 		"fs": [{
 
 			"action": "FILECOPY",
-			"sourceLocation": "files/lib/rdbms-ingestion.jar",
+			"sourceLocation": "files/lib/hive-gen.jar",
 			"destinationLocation": "bdre/lib/hive-gen.jar",
 			"permission": "777",
 			"copy": true
 		}, {
 
 			"action": "FILECOPY",
-			"sourceLocation": "files/lib/hive-data-gen-1.1-SNAPSHOT.jar",
-			"destinationLocation": "bdre/lib/hive-data-gen-1.1-SNAPSHOT.jar",
+			"sourceLocation": "files/lib/hive-data-gen-1.1-SNAPSHOT-executable.jar",
+			"destinationLocation": "bdre/lib/hive-data-gen-1.1-SNAPSHOT-executable.jar",
 			"permission": "777",
 			"copy": true
 		}, {
@@ -56,19 +61,19 @@
 			"insert": [{
 				"tableName": "PROCESS_TYPE",
 				"data": [
-					[18, "Hive Generation_Parent", "NULL"],
-					[14, "Hive Generation", 18]
+					["18", "Hive Generation_Parent", "NULL"],
+					["14", "Hive Generation", 18]
 				]
 			}, {
 				"tableName": "GENERAL_CONFIG",
 				"data": [
-					["18", "credential", "Credential Configuration", "Credentials for authentication", 1, "true|false", "option", 1],
-					["14", "data", "Data-generate Configuration", " ", 1, "true", "text", 1],
-					["14", "table", "table Schema Configuration", " ", 1, "true", "text", 1],
-					["default_val.18", "password_enabled", "credential", "Credentials for authentication", 1, "true", "text", 1],
-					["testDataGen", "data-gen-id.1", "data", "Generating Date", 1, "randomDate", "text", 1],
-					["testDataGen", "data-gen-id.2", "data", "Generating number", 1, "randomNumber", "text", 1],
-					["testDataGen", "data-gen-id.3", "data", "Generating String", 1, "randomRegexPattern", "text", 1]
+					["18", "credential", "Credential Configuration", "Credentials for authentication", "1", "true|false", "option", "1"],
+					["14", "data", "Data-generate Configuration", " ", "1", "true", "text", "1"],
+					["14", "table", "table Schema Configuration", " ", "1", "true", "text", "1"],
+					["default_val.18", "password_enabled", "credential", "Credentials for authentication", "1", "true", "text", "1"],
+					["testDataGen", "data-gen-id.1", "data", "Generating Date", "1", "randomDate", "text", "1"],
+					["testDataGen", "data-gen-id.2", "data", "Generating number", "1", "randomNumber", "text", "1"],
+					["testDataGen", "data-gen-id.3", "data", "Generating String", "1", "randomRegexPattern", "text", "1"]
 				]
 			}],
 			"update": {
