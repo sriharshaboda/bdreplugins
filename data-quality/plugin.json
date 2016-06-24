@@ -1,0 +1,100 @@
+{
+	"pluginDetails": {
+		"pluginId": "dq",
+		"name": "plugin dq setup",
+		"description": "designing json for dq setup",
+		"version": "1.0.0",
+		"author": "Satish Kumar Uppara",
+		"pluginWebsite": "www.google.com",
+		"uninstallable": true
+	},
+	"pluginDependency": [{
+
+		"pluginId": "bdre-min",
+		"version": "1",
+		"versionLevel": "1"
+	}],
+	"pluginConfig":[{
+
+		"configGroup": "16.wf-cont-nodes",
+		"key": "1",
+		"value": "com.wipro.ats.bdre.wgen.LOFActionNode"
+	},{
+
+		"configGroup": "16.wf-cont-nodes",
+		"key": "2",
+		"value": "com.wipro.ats.bdre.wgen.DataQualityActionNode"
+	},{
+
+		"configGroup": "16.wf-cont-nodes",
+		"key": "3",
+		"value": "com.wipro.ats.bdre.wgen.FileRegistrationNode"
+	},{
+
+		"configGroup": "16.wf-gen",
+		"key": "workflow jar location",
+		"value": "bdre/lib/dq-workflow-generator-1.1-SNAPSHOT.jar"
+	},{
+
+		"configGroup": "navigation",
+		"key": "Data Ingestion",
+		"value": "{ \"label\": \"New DQ Job\",   \"collapse\": \"1\",   \"url\": \"dqprocess.page\", \"children\": [] }"
+	}],
+	"install": {
+		"fs": [{
+
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/dq-workflow-generator-1.1-SNAPSHOT.jar",
+			"destinationLocation": "bdre/lib/dq-workflow-generator-1.1-SNAPSHOT.jar",
+			"permission": "777",
+			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/process-type-19.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-19.sh",
+			"permission": "777",
+			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/dq-1.1-SNAPSHOT-executable.jar",
+			"destinationLocation": "bdre/lib/dq/dq-1.1-SNAPSHOT-executable.jar",
+			"permission": "777",
+			"copy": true
+		}],
+		"metadata": {
+			"insert": [{
+				"tableName": "PROCESS_TYPE",
+				"data": [
+					["19", "DQ Parent", "NULL"],
+					["16", "DQ", "19"]
+				]
+			},{
+				"tableName": "GENERAL_CONFIG",
+				"data": [
+                                        ["19","credential","Credential Configuration","Credentials for authentication","1","true|false","option", "1"],
+					["16","dq","DQ Configuration","Data Quality configuration", "1","true","text", "1"]
+                                        ]
+			}],
+			"update": {
+				"tableName": "",
+				"data": [
+					]
+				
+			},
+			"delete": {
+				"tableName": "",
+				"data": [
+					]
+				
+			}
+		},
+		"uiWar": {
+			"location":"files/webapp/dq-md-ui-1.1-SNAPSHOT.war"
+					
+		},
+		"restWar": {
+			"location":"files/webapp/dq-md-rest-api-1.1-SNAPSHOT.war"
+		}
+
+	}
+}
