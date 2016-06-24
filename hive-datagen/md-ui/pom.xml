@@ -21,7 +21,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wipro.ats.bdre.plugin.datagen</groupId>
-    <artifactId>md-ui</artifactId>
+    <artifactId>dg-md-ui</artifactId>
     <packaging>war</packaging>
 
     <dependencies>

@@ -23,7 +23,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wipro.ats.bdre.plugin.datagen</groupId>
-    <artifactId>md-rest-api</artifactId>
+    <artifactId>dg-md-rest-api</artifactId>
     <packaging>war</packaging>
 
     <dependencies>

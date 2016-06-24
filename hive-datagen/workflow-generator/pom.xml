@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wipro.ats.bdre.plugin.datagen</groupId>
-    <artifactId>workflow-generator</artifactId>
+    <artifactId>dg-workflow-generator</artifactId>
     <version>1.1-SNAPSHOT</version>
 <dependencies>
     <dependency>
