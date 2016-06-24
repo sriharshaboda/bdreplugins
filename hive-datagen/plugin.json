@@ -28,7 +28,7 @@
 
 		"configGroup": "14.wf-gen",
 		"key": "workflow jar location",
-		"value": "bdre/lib/hive-gen.jar"
+		"value": "bdre/lib/dg-workflow-generator-1.1-SNAPSHOT.jar"
 	}, {
 
 		"configGroup": "navigation",
@@ -39,15 +39,15 @@
 		"fs": [{
 
 			"action": "FILECOPY",
-			"sourceLocation": "files/lib/hive-gen.jar",
-			"destinationLocation": "bdre/lib/hive-gen.jar",
+			"sourceLocation": "files/lib/dg-workflow-generator-1.1-SNAPSHOT.jar",
+			"destinationLocation": "bdre/lib/dg-workflow-generator-1.1-SNAPSHOT.jar",
 			"permission": "777",
 			"copy": true
 		}, {
 
 			"action": "FILECOPY",
 			"sourceLocation": "files/lib/hive-data-gen-1.1-SNAPSHOT-executable.jar",
-			"destinationLocation": "bdre/lib/hive-data-gen-1.1-SNAPSHOT-executable.jar",
+			"destinationLocation": "bdre/lib/hive-data-gen/hive-data-gen-1.1-SNAPSHOT-executable.jar",
 			"permission": "777",
 			"copy": true
 		}, {
@@ -88,11 +88,11 @@
 			}
 		},
 		"uiWar": {
-			"location": "files/webapp/md-ui-1.1-SNAPSHOT.war"
+			"location": "files/webapp/dg-md-ui-1.1-SNAPSHOT.war"
 
 		},
 		"restWar": {
-			"location": "files/webapp/md-rest-api-1.1-SNAPSHOT.war"
+			"location": "files/webapp/dg-md-rest-api-1.1-SNAPSHOT.war"
 		}
 
 	}
