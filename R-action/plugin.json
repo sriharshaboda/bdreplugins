@@ -1,0 +1,79 @@
+{
+	"pluginDetails": {
+		"pluginId": "R-Action",
+		"name": "R Action",
+		"description": "R Action plugin manager",
+		"version": "1.0.0",
+		"author": "KAPIL PALIWAL",
+		"pluginWebsite": "www.google.com",
+		"uninstallable": false
+	},
+	"pluginDependency": [{
+
+		"pluginId": "bdre-min",
+		"version": "1",
+		"versionLevel": "1"
+	}],
+	"pluginConfig":[{
+
+		"configGroup": "24.wf-cont-nodes",
+		"key": "1",
+		"value": "com.wipro.ats.bdre.wgen.RActionNode"
+	},{
+
+		"configGroup": "24.wf-gen",
+		"key": "workflow jar location",
+		"value": "bdre/lib/r-workflow-generator-1.1-SNAPSHOT.jar"
+	}],
+	"install": {
+		"fs": [{
+
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/r-workflow-generator-1.1-SNAPSHOT.jar",
+			"destinationLocation": "bdre/lib/r-workflow-generator-1.1-SNAPSHOT.jar",
+			"permission": "777",
+			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/process-type-2.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-2.sh",
+			"permission": "777",
+			"copy": true
+		}],
+		"metadata": {
+			"insert": [{
+				"tableName": "PROCESS_TYPE",
+				"data": [
+					["2", "Semantic", "NULL"],
+					["24", "R Action", "2"]
+				]
+			},{
+				"tableName": "GENERAL_CONFIG",
+				"data": [
+					["24","param","Parameters","Additional parameters", "1","true","text", "1"],
+					["24", "r-file", "R file", "R code","1", "true", "r", "1"]
+				]
+			}],
+			"update": {
+				"tableName": "",
+				"data": [
+					]
+				
+			},
+			"delete": {
+				"tableName": "",
+				"data": [
+					]
+				
+			}
+		},
+		"uiWar": {
+			"location":""
+					
+		},
+		"restWar": {
+			"location":""
+		}
+
+	}
+}
