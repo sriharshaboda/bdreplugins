@@ -39,6 +39,12 @@
 			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-2.sh",
 			"permission": "777",
 			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/Rhadoop.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/Rhadoop.sh",
+			"permission": "777",
+			"copy": true
 		}],
 		"metadata": {
 			"insert": [{
