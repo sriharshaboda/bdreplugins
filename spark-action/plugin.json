@@ -41,8 +41,8 @@
 			"copy": true
 		},{
 			"action": "FILECOPY",
-			"sourceLocation": "files/lib/spark-core",
-			"destinationLocation": "bdre/lib/spark-core",
+			"sourceLocation": "files/lib/spark-core-1.1-SNAPSHOT.jar",
+			"destinationLocation": "bdre/lib/spark-core/spark-core-1.1-SNAPSHOT.jar",
 			"permission": "777",
 			"copy": true
 		}],

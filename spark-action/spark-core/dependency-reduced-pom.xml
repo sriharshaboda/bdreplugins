@@ -32,7 +32,7 @@
                   <resource>reference.conf</resource>
                 </transformer>
               </transformers>
-              <outputDirectory>${project.parent.build.directory}/spark_action_plugin/files/lib/${project.artifactId}</outputDirectory>
+              <outputDirectory>${project.build.directory}/lib/${project.artifactId}</outputDirectory>
             </configuration>
           </execution>
         </executions>
@@ -46,7 +46,7 @@
               <goal>copy-dependencies</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.parent.build.directory}/spark_action_plugin/files/lib/${project.artifactId}</outputDirectory>
+              <outputDirectory>${project.build.directory}/lib/${project.artifactId}</outputDirectory>
             </configuration>
           </execution>
           <execution>
@@ -64,7 +64,7 @@
                   <type>${project.packaging}</type>
                 </artifactItem>
               </artifactItems>
-              <outputDirectory>${project.parent.build.directory}/spark_action_plugin/files/lib/${project.artifactId}</outputDirectory>
+              <outputDirectory>${project.parent.build.directory}/spark_action_plugin/files/lib</outputDirectory>
             </configuration>
           </execution>
         </executions>
