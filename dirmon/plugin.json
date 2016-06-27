@@ -1,0 +1,83 @@
+{
+	"pluginDetails": {
+		"pluginId": "dir-monitoring",
+		"name": "plugin file monitoring",
+		"description": "designing json for file monitoring",
+		"version": "1.0.0",
+		"author": "FAROOQUE/PREM",
+		"pluginWebsite": "www.google.com",
+		"uninstallable": true
+	},
+	"pluginDependency": [{
+
+		"pluginId": "bdre-min",
+		"version": "1",
+		"versionLevel": "1"
+	}],
+	"pluginConfig":[{
+
+		"configGroup": "navigation",
+		"key": "Data Ingestion",
+		"value": "{ \"label\": \"Monitor Directory and Ingest \",   \"collapse\": \"1\",   \"url\": \"filemonitor.page\", \"children\": [] }"
+	},{
+
+		"configGroup": "26.execute-script",
+		"key": "execute-script",
+		"value": "filemonitor.sh"
+	}],
+	"install": {
+		"fs": [{
+
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/process-type-26.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-26.sh",
+			"permission": "777",
+			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/filemonitor.sh",
+			"destinationLocation": "bdre/bdre-scripts/execution/filemonitor.sh",
+			"permission": "777",
+			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/file-mon-1.1-SNAPSHOT-executable.jar",
+			"destinationLocation": "bdre/lib/file-mon/file-mon-1.1-SNAPSHOT-executable.jar",
+			"permission": "777",
+			"copy": true
+		}],
+		"metadata": {
+			"insert": [{
+				"tableName": "PROCESS_TYPE",
+				"data": [
+					["26", "Dirmon Parent", "NULL"],
+					["27", "Directory Monitor", "26"]
+				]
+			},{
+				"tableName": "GENERAL_CONFIG",
+				"data": [
+                                        ]
+			}],
+			"update": {
+				"tableName": "",
+				"data": [
+					]
+				
+			},
+			"delete": {
+				"tableName": "",
+				"data": [
+					]
+				
+			}
+		},
+		"uiWar": {
+			"location":"files/webapp/filemon-md-ui-1.1-SNAPSHOT.war"
+					
+		},
+		"restWar": {
+			"location":"files/webapp/filemon-md-rest-api-1.1-SNAPSHOT.war"
+		}
+
+	}
+}
