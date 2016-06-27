@@ -1,0 +1,87 @@
+{
+	"pluginDetails": {
+		"pluginId": "spark-action",
+		"name": "spark action",
+		"description": "spark action plugin manager",
+		"version": "1.0.0",
+		"author": "KAPIL PALIWAL",
+		"pluginWebsite": "www.google.com",
+		"uninstallable": false
+	},
+	"pluginDependency": [{
+
+		"pluginId": "bdre-min",
+		"version": "1",
+		"versionLevel": "1"
+	}],
+	"pluginConfig":[{
+
+		"configGroup": "25.wf-cont-nodes",
+		"key": "1",
+		"value": "com.wipro.ats.bdre.wgen.SparkActionNode"
+	},{
+
+		"configGroup": "25.wf-gen",
+		"key": "workflow jar location",
+		"value": "bdre/lib/spark-workflow-generator-1.1-SNAPSHOT.jar"
+	}],
+	"install": {
+		"fs": [{
+
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/spark-workflow-generator-1.1-SNAPSHOT.jar",
+			"destinationLocation": "bdre/lib/spark-workflow-generator-1.1-SNAPSHOT.jar",
+			"permission": "777",
+			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/process-type-2.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-2.sh",
+			"permission": "777",
+			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/spark-core-1.1-SNAPSHOT.jar",
+			"destinationLocation": "bdre/lib/spark-core/spark-core-1.1-SNAPSHOT.jar",
+			"permission": "777",
+			"copy": true
+		}],
+		"metadata": {
+			"insert": [{
+				"tableName": "PROCESS_TYPE",
+				"data": [
+					["2", "Semantic", "NULL"],
+					["25", "Spark Action", "2"]
+				]
+			},{
+				"tableName": "GENERAL_CONFIG",
+				"data": [
+					["25", "spark-conf", "Spark Job Configuration", "Spark Job Configuration", "1", "true", "text", "1"],
+					["25", "spark-main", "Spark Main Class", "Spark Main Class", "1", "true", "text", "1"],
+                                        ["25", "app-args", "Application arguments", "Application arguments", "1", "true", "text", "1"],
+                                        ["25", "spark-jar", "Spark jar", "Spark Application jar", "1", "true", "spark", "1"]
+				]
+			}],
+			"update": {
+				"tableName": "",
+				"data": [
+					]
+				
+			},
+			"delete": {
+				"tableName": "",
+				"data": [
+					]
+				
+			}
+		},
+		"uiWar": {
+			"location":""
+					
+		},
+		"restWar": {
+			"location":""
+		}
+
+	}
+}
