@@ -6,7 +6,7 @@
 		"version": "1.0.0",
 		"author": "bdreuser",
 		"pluginWebsite": "www.google.com",
-		"uninstallable": false
+		"uninstallable": true
 	},
 	"pluginDependency": [{
 

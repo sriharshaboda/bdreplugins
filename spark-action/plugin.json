@@ -6,7 +6,7 @@
 		"version": "1.0.0",
 		"author": "KAPIL PALIWAL",
 		"pluginWebsite": "www.google.com",
-		"uninstallable": false
+		"uninstallable": true
 	},
 	"pluginDependency": [{
 
@@ -35,8 +35,8 @@
 			"copy": true
 		},{
 			"action": "FILECOPY",
-			"sourceLocation": "files/scripts/process-type-2.sh",
-			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-2.sh",
+			"sourceLocation": "files/scripts/process-type-2-25.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-2-25.sh",
 			"permission": "777",
 			"copy": true
 		},{
