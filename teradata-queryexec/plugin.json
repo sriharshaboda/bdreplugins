@@ -1,0 +1,85 @@
+{
+	"pluginDetails": {
+		"pluginId": "td-query-action",
+		"name": "Teradata Action",
+		"description": "Teradata Query Executor in Oozie",
+		"version": "1.0.0",
+		"author": "bdreuser",
+		"pluginWebsite": "www.google.com",
+		"uninstallable": true
+	},
+	"pluginDependency": [{
+
+		"pluginId": "bdre-min",
+		"version": "1",
+		"versionLevel": "1"
+	}],
+	"pluginConfig":[{
+
+		"configGroup": "43.wf-cont-nodes",
+		"key": "1",
+		"value": "com.wipro.ats.bdre.wgen.TeradataQueryActionNode"
+	},{
+
+		"configGroup": "43.wf-gen",
+		"key": "workflow jar location",
+		"value": "bdre/lib/td-query-workflow-generator-1.0-SNAPSHOT.jar"
+	}],
+	"install": {
+		"fs": [{
+
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/td-query-workflow-generator-1.0-SNAPSHOT.jar",
+			"destinationLocation": "bdre/lib/td-query-workflow-generator-1.0-SNAPSHOT.jar",
+			"permission": "777",
+			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/process-type-2-43.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-2-43.sh",
+			"permission": "777",
+			"copy": true
+		},{
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/query-runner-remote.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/query-runner-remote.sh",
+			"permission": "777",
+			"copy": true
+		}],
+		"metadata": {
+			"insert": [{
+				"tableName": "PROCESS_TYPE",
+				"data": [
+					["2", "Semantic", "NULL"],
+					["43", "TeraData Action", "2"]
+				]
+			},{
+				"tableName": "GENERAL_CONFIG",
+				"data": [
+					["43","param","Parameters","Additional parameters", "1","true","text", "1"],
+					["43", "query-file", "Teradata Query file", "Teradata Query code","1", "true", "tdquery", "1"]
+				]
+			}],
+			"update": {
+				"tableName": "",
+				"data": [
+					]
+				
+			},
+			"delete": {
+				"tableName": "",
+				"data": [
+					]
+				
+			}
+		},
+		"uiWar": {
+			"location":""
+					
+		},
+		"restWar": {
+			"location":""
+		}
+
+	}
+}

@@ -3,16 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.wipro.ats.bdre.plugin</groupId>
-    <artifactId>teradata-ingestion</artifactId>
     <packaging>pom</packaging>
+    <groupId>com.wipro.ats.bdre.plugin</groupId>
+    <artifactId>teradata-queryexec</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>tdimport</module>
-        <module>md-rest-api</module>
-        <module>md-ui</module>
+        <module>workflow-generator</module>
     </modules>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -86,7 +84,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/teradata_ingestion_plugin/files/scripts</outputDirectory>
+                            <outputDirectory>${project.build.directory}/td_query_action_plugin/files/scripts</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.basedir}/scripts</directory>
@@ -103,7 +101,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/teradata_ingestion_plugin/</outputDirectory>
+                            <outputDirectory>${project.build.directory}/td_query_action_plugin/</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.basedir}</directory>
@@ -613,5 +611,4 @@
 
 
     </dependencyManagement>
-
 </project>
