@@ -89,7 +89,8 @@
 			}
 		},
 		"uiWar": {
-			"location":"files/webapp/dq-md-ui-1.1-SNAPSHOT.war"
+			"location":"files/webapp/dq-md-ui-1.1-SNAPSHOT.war",
+			"localizationFile":"WEB-INF/classes/messagesdq_en.properties"
 					
 		},
 		"restWar": {
