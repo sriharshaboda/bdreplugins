@@ -5,11 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wipro.ats.bdre.plugin</groupId>
-    <artifactId>R-action</artifactId>
+    <artifactId>r-action</artifactId>
     <packaging>pom</packaging>
     <version>1.1-SNAPSHOT</version>
     <modules>
         <module>workflow-generator</module>
+        <module>md-ui</module>
     </modules>
     <dependencies>
         <dependency>
