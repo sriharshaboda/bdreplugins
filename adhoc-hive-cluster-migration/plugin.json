@@ -1,0 +1,114 @@
+{
+	"pluginDetails": {
+		"pluginId": "cluster-migration",
+		"name": "Adhoc Cluster Migration",
+		"description": "Adhoc Hive Cluster Migration",
+		"version": "1.0.0",
+		"author": "bdreuser",
+		"pluginWebsite": "www.google.com",
+		"uninstallable": true
+	},
+	"pluginDependency": [{
+
+		"pluginId": "bdre-min",
+		"version": "1",
+		"versionLevel": "1"
+	}],
+	"pluginConfig": [{
+
+		"configGroup": "32.wf-cont-nodes",
+		"key": "1",
+		"value": "com.wipro.ats.bdre.wgen.MigrationPreprocessorActionNode"
+	}, {
+
+		"configGroup": "33.wf-cont-nodes",
+		"key": "2",
+		"value": "com.wipro.ats.bdre.wgen.SourceStageLoadActionNode"
+	}, {
+
+		"configGroup": "34.wf-cont-nodes",
+		"key": "3",
+		"value": "com.wipro.ats.bdre.wgen.SourceToDestCopyActionNode"
+	}, {
+
+		"configGroup": "35.wf-cont-nodes",
+		"key": "4",
+		"value": "com.wipro.ats.bdre.wgen.DestTableLoadActionNode"
+	}, {
+
+		"configGroup": "36.wf-cont-nodes",
+		"key": "5",
+		"value": "com.wipro.ats.bdre.wgen.RegisterPartitionsActionNode"
+	}, {
+
+		"configGroup": "32.wf-gen",
+		"key": "workflow jar location",
+		"value": "bdre/lib/hivemigration-workflow-generator-1.0-SNAPSHOT.jar"
+	}, {
+
+		"configGroup": "navigation",
+		"key": "Data Ingestion",
+		"value": "{'label': 'Hive Table Migration','collapse': '1','url': 'hivetablemigration.page','children': []} "
+	}],
+	"install": {
+		"fs": [{
+
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/hivemigration-workflow-generator-1.0-SNAPSHOT.jar",
+			"destinationLocation": "bdre/lib/hivemigration-workflow-generator-1.0-SNAPSHOT.jar",
+			"permission": "777",
+			"copy": true
+		}, {
+
+			"action": "FILECOPY",
+			"sourceLocation": "files/lib/cluster-migration-1.0-SNAPSHOT-jar-with-dependencies.jar",
+			"destinationLocation": "bdre/lib/cluster-migration/cluster-migration-1.0-SNAPSHOT-jar-with-dependencies.jar",
+			"permission": "777",
+			"copy": true
+		}, {
+			"action": "FILECOPY",
+			"sourceLocation": "files/scripts/process-type-31.sh",
+			"destinationLocation": "bdre/bdre-scripts/deployment/process-type-31.sh",
+			"permission": "777",
+			"copy": true
+		}],
+		"metadata": {
+			"insert": [{
+				"tableName": "PROCESS_TYPE",
+				"data": [
+					["31","Migration","null"],
+					["32","Preprocessing","31"],
+					["33","Source Stage Load","31"],
+					["34","Source to Dest Stage Copy","31"],
+					["35","Destination Table Load","31"],
+					["36","Register Partition","31"]
+				]
+			}, {
+				"tableName": "GENERAL_CONFIG",
+				"data": [
+					["cluster.nn-address", "Local cluster - Namenode Address", "Namenode Address","Local cluster" , "1", "hdfs://localhost:8020", "text" , "1"],
+					["cluster.jt-address", "Local cluster - Job Tracker Address", "Job Tracker Address","Local cluster" , "1", "localhost:8032", "text" , "1"],
+					["cluster.hive-address", "Local cluster - Hive Server2 Address", "Hive Server2 Address","Local cluster" , "1", "localhost:10000", "text" , "1"]
+				]
+			}],
+			"update": {
+				"tableName": "",
+				"data": []
+
+			},
+			"delete": {
+				"tableName": "",
+				"data": []
+
+			}
+		},
+		"uiWar": {
+			"location": "files/webapp/hivemigration-md-ui-1.0-SNAPSHOT.war"
+
+		},
+		"restWar": {
+			"location": "files/webapp/hivemigration-md-rest-api-1.0-SNAPSHOT.war"
+		}
+
+	}
+}
