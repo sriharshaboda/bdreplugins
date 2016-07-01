@@ -42,7 +42,27 @@
 	}, {
 
 		"configGroup": "32.wf-gen",
-		"key": "workflow jar location",
+		"key": "workflow jar location 1",
+		"value": "bdre/lib/hivemigration-workflow-generator-1.0-SNAPSHOT.jar"
+	}, {
+
+		"configGroup": "33.wf-gen",
+		"key": "workflow jar location 2",
+		"value": "bdre/lib/hivemigration-workflow-generator-1.0-SNAPSHOT.jar"
+	}, {
+
+		"configGroup": "34.wf-gen",
+		"key": "workflow jar location 3",
+		"value": "bdre/lib/hivemigration-workflow-generator-1.0-SNAPSHOT.jar"
+	}, {
+
+		"configGroup": "35.wf-gen",
+		"key": "workflow jar location 4",
+		"value": "bdre/lib/hivemigration-workflow-generator-1.0-SNAPSHOT.jar"
+	}, {
+
+		"configGroup": "36.wf-gen",
+		"key": "workflow jar location 5",
 		"value": "bdre/lib/hivemigration-workflow-generator-1.0-SNAPSHOT.jar"
 	}, {
 
